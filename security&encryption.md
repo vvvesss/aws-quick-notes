@@ -99,7 +99,7 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 - Integration LB, CloudFront, API GW, !!!EC2 public can't
 - FQDN || *.FQDN
 - DNS(auto renew -> CNAME record) || Email validation
-- import no auto renew, can message
+- Imported Certificate no auto renew, but can send messages
 
 AWS Config(expire check) || ACM => EventBridge => SNS || SQS || Lambda
 
