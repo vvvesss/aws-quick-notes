@@ -156,8 +156,8 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 
 ## AWS Shield
 
-Standard > free syn udp floods and attacks
-Advanced > cost much, but full features and support
+- Standard > free syn udp floods and attacks
+- Advanced > cost much, but full features and support
 
 ## AWS Firewall Manager
 
