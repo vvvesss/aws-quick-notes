@@ -1,5 +1,19 @@
 # AWS Database: How to Choose
 
+## Table of Contents
+
+- [Considerations](#considerations)
+  - [RDS (Relational Database Service)](#rds-relational-database-service)
+  - [Redis / Memcached (In-Memory Store)](#redis--memcached-in-memory-store)
+  - [S3 (Object Store)](#s3-object-store)
+  - [DocumentDB (MongoDB Compatible)](#documentdb-mongodb-compatible)
+  - [Neptune (Graph Database)](#neptune-graph-database)
+  - [Keyspaces (Apache Cassandra)](#keyspaces-apache-cassandra)
+  - [QLDB (Quantum Ledger Database)](#qldb-quantum-ledger-database)
+  - [Timestream (Time Series Database)](#timestream-time-series-database)
+  - [Ingestion Pipelines](#ingestion-pipelines)
+  - [Summary](#summary)
+
 When choosing a database on AWS, consider the following factors:
 
 ## Considerations

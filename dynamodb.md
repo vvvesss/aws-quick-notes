@@ -1,5 +1,26 @@
 # AWS DynamoDB
 
+## Table of Contents
+
+- [Table Structure](#table-structure)
+  - [Attribute Types](#attribute-types)
+- [Primary Keys](#primary-keys)
+  - [Example: `UserOrders` Table](#example-userorders-table)
+  - [Key Terminology](#key-terminology)
+- [Capacity Modes](#capacity-modes)
+  - [Provisioned Mode](#provisioned-mode)
+  - [On-Demand Mode](#on-demand-mode)
+- [Features](#features)
+  - [DAX (DynamoDB Accelerator)](#dax-dynamodb-accelerator)
+  - [Stream Processing](#stream-processing)
+  - [Global Tables](#global-tables)
+- [Data Management](#data-management)
+  - [TTL (Time to Live)](#ttl-time-to-live)
+  - [Backups](#backups)
+- [Integration with S3](#integration-with-s3)
+  - [Export](#export)
+  - [Import](#import)
+
 DynamoDB is a fully managed NoSQL database service designed to handle massive workloads, including millions of requests per second, trillions of rows, and hundreds of terabytes of data.  
 It supports **IAM-based access**, **auto-scaling**, and **two table classes**: **Standard** and **Infrequent Access (IA)**.
 

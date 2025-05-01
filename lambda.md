@@ -1,5 +1,18 @@
 # AWS Lambda
 
+## Table of Contents
+
+- [Execution Environment](#execution-environment)
+- [Deployment](#deployment)
+- [Invocation Behavior](#invocation-behavior)
+  - [Synchronous Invocation (e.g., API Gateway)](#synchronous-invocation-eg-api-gateway)
+  - [Asynchronous Invocation (e.g., S3, SNS)](#asynchronous-invocation-eg-s3-sns)
+- [Dead Letter Queue (DLQ)](#dead-letter-queue-dlq)
+- [Cold Starts](#cold-starts)
+  - [Optimizations](#optimizations)
+- [Networking](#networking)
+- [Database Integration](#database-integration)
+
 ## Execution Environment
 
 - **Memory**: 128 MB to 10 GB

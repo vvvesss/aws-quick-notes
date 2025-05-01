@@ -1,5 +1,19 @@
 # AWS IAM Advanced
 
+## Table of Contents
+
+- [AWS Organizations](#aws-organizations)
+- [Resources-Based Policy vs IAM Roles](#resources-based-policy-vs-iam-roles)
+- [IAM Permission Boundaries](#iam-permission-boundaries)
+  - [Access Logic](#access-logic--organization-scp--permission-boundaries--iam-policies)
+- [IAM Identity Center](#iam-identity-center)
+  - [Example](#example)
+- [AWS Directory Services](#aws-directory-services)
+  - [Microsoft AD](#microsoft-ad)
+    - [3 Types](#3-types)
+- [AWS Control Tower](#aws-control-tower)
+  - [Guardrails](#guardrails)
+
 ## AWS Organizations
 
 Global service

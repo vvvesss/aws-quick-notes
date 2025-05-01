@@ -1,6 +1,17 @@
-# 📚 AWS RDS (Relational Database Service)
+# AWS RDS (Relational Database Service)
 
-## 🛠️ Core Features
+## Table of Contents
+
+- [Core Features](#core-features)
+- [Read Replicas](#read-replicas)
+- [Multi-AZ Deployment](#multi-az-deployment)
+- [Snapshots & Restore](#snapshots--restore)
+- [RDS Custom](#rds-custom)
+- [Amazon Aurora](#amazon-aurora)
+- [Security](#security)
+- [RDS Proxy](#rds-proxy)
+
+## Core Features
 
 - **Managed Service**:
   - Automatic provisioning
@@ -19,7 +30,7 @@
 
 ---
 
-## 📤 Read Replicas
+## Read Replicas
 
 - Up to **15 asynchronous** replicas
 - Use for:
@@ -32,7 +43,7 @@
 
 ---
 
-## 🛡️ Multi-AZ Deployment
+## Multi-AZ Deployment
 
 - **High Availability / Disaster Recovery (DR)**
   - **Synchronous replication** to standby
@@ -42,14 +53,14 @@
 
 ---
 
-## 🔄 Snapshots & Restore
+## Snapshots & Restore
 
 - Create snapshot from any RDS instance
 - Restore into new instance (optionally with new AZ, size, etc.)
 
 ---
 
-## 🧪 RDS Custom
+## RDS Custom
 
 - For **Oracle** and **SQL Server**
 - Full control of:
@@ -58,7 +69,7 @@
 
 ---
 
-## ⚡ Amazon Aurora
+## Amazon Aurora
 
 - **Performance**:
   - 3× faster than PostgreSQL
@@ -85,7 +96,7 @@
 
 ---
 
-## 🔐 Security
+## Security
 
 - **Encryption at Rest**:
   - AWS KMS
@@ -108,7 +119,7 @@
 
 ---
 
-## 🌀 RDS Proxy
+## RDS Proxy
 
 - Connection pooling
 - Reduce failover time by ~66%
@@ -118,51 +129,3 @@
   - PostgreSQL
   - **Not** Oracle
 - **Enforces IAM** and uses AWS **Secrets Manager**
-
----
-
-# 🚀 AWS ElastiCache
-
-## 🧠 Core Use Cases
-
-- In-memory cache for stateless apps
-- Read-heavy or session-heavy workloads
-- Store ephemeral data
-
----
-
-## 🔧 Supported Engines
-
-### 🔹 Redis
-
-- **Multi-AZ + Failover + AOF**
-- **AOF (Append-Only File)** persistence
-- Supports:
-  - Sets
-  - Sorted sets
-- **Lazy Loading**: Load from backend on read miss
-- **Write Through**: Update both cache and backend on write
-- **User/Pass Auth via SASL**
-- Single-threaded (but newer Redis supports multi-threaded reads)
-
-### 🔸 Memcached
-
-- **Multi-node** distributed cache
-- No high availability (HA)
-- No persistence
-- Multi-threaded
-- Simple key-value store
-
----
-
-## 📈 Scaling & Architecture
-
-- Horizontal scaling via **sharding**
-- Read replicas
-- Multi-node clusters
-- Best for:
-  - Session storage
-  - Caching DB queries or HTML fragments
-  - Real-time leaderboards or counters
-
----

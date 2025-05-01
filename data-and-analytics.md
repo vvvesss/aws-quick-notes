@@ -1,5 +1,26 @@
 # AWS Data and Analytics
 
+## Table of Contents
+
+- [Athena](#athena)
+- [Redshift](#redshift)
+  - [Overview](#overview)
+  - [Cluster](#cluster)
+  - [Snapshots](#snapshots)
+  - [Loading Data Sources](#loading-data-sources)
+  - [Redshift Spectrum](#redshift-spectrum)
+- [OpenSearch](#opensearch)
+- [EMR Elastic Map Reduce](#emr-elastic-map-reduce)
+  - [Node Types](#node-types)
+- [Amazon QuickSight](#amazon-quicksight)
+- [AWS Glue](#aws-glue)
+- [AWS Data Lake](#aws-data-lake)
+- [Apache Flink](#apache-flink)
+  - [Backups](#backups)
+- [Amazon Managed Streaming for Apache Kafka (MSK)](#amazon-managed-streaming-for-apache-kafka-msk)
+  - [Kinesis DS vs MSK](#kinesis-ds-vs-msk)
+- [Ingestion Pipeline](#ingestion-pipeline)
+
 ## Athena
 
 **S3 Serverless** Presto SQL file queries CSV JSON ORX Avro Parquet
@@ -158,7 +179,7 @@ Alternative to Kinesis Managed Kafka clusters
 - multi Az up to 3 for HA
 - Auto recovery
 
-### Kinesis DS                  vs MSK
+### Kinesis DS vs MSK
 
 - 1Mb limit               | >= 1Mb
 - Streams shards   |  Topics Partitions
