@@ -1,12 +1,30 @@
 # AWS Security & Encryption
 
-## Encryption 101
+1. [Encryption](Encryption)  
+2. [KMS Overview](KMS-Overview)  
+    - [KMS Key Policies](KMS-Key-Policies)  
+    - [KMS Multi Region](KMS-Multi-Region)  
+3. [S3 Replication and Encryption](S3-Replication-and-Encryption)  
+4. [AMI Sharing Process](AMI-Sharing-Process)  
+5. [SSM (System Manager) Parameter Store](SSM-(System-Manager)-Parameter-Store)
+   - [Tiers](Tiers)  
+6. [AWS Secrets Manager](AWS-Secrets-Manager)
+7. [AWS Certificate Manager](AWS-Certificate-Manager)
+8. [API GW Types](API-GW-Types)
+9. [WebAppFirewall WAF](WebAppFirewall-WAF)
+10. [AWS Shield](AWS-Shield)
+11. [AWS Firewall Manager](AWS-Firewall-Manager)
+12. [GuardDuty](GuardDuty)
+13. [Inspector](Inspector)
+14. [Macie](Macie)
+
+## Encryption
 
 - Encrypt **IN-Flight** TLS/SSL
 - Server Side **AT-Rest** encryption
 - Client Side **AT-Rest** encryption
 
-## KMS overview
+## KMS Overview
 
 - Symmetric AES-256
   - single key to encrypt/decrypt
@@ -28,23 +46,23 @@ Pay for API call to KMS 0.03$ / 10000calls
   - Managed: auto every 1 year
   - Customer: if enable & on-demand
   - Imported: manual
+  - **KMS Keys are scoped per region**
 
-### KMS Keys are scoped per region
+## KMS Key Policies
 
-- KMS key policies
-  - Default KMS key policy, accessible by everyone in this account
-  - Custom
-    - define user roles to access
-    - define who can administer
-    - used for cross account access,
-    - Example: create volume from snapshot from different account: kms:CallerAccount: "target-account-id"
+- Default KMS key policy, accessible by everyone in this account
+- Custom
+  - define user roles to access
+  - define who can administer
+  - used for cross account access,
+  - Example: create volume from snapshot from different account: kms:CallerAccount: "target-account-id"
 
-### KMS Multi-Region
+### KMS Multi Region
 
-- Same ID, key, and rotations. 
-- Not Global. Primary and replicas. 
+- Same ID, key, and rotations.
+- Not Global. Primary and replicas.
 - **Usage: encrypt in one and decrypt in other regions.**
--  Not recommended. Global client side encryption on global DDB or Aurora (protect data even from db admin, example SSN).
+- Not recommended. Global client side encryption on global DDB or Aurora (protect data even from db admin, example SSN).
 
 ## S3 Replication and Encryption
 
@@ -99,7 +117,7 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 
 - Public/Private
 - Free for public
-- Auto renewal 
+- Auto renewal
 - Integration LB, CloudFront, API GW, !!!EC2 public can't
 - FQDN || *.FQDN
 - DNS(auto renew -> CNAME record) || Email validation
@@ -107,7 +125,7 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 
 - **AWS Config(expire check) || ACM => EventBridge => SNS || SQS || Lambda**
 
-### API GW Types
+## API GW Types
 
 - **Edge Optimized (default) http -> CF Edge location  -> API GW**
   - TLS must be in the same region as CF (us-east1?)
