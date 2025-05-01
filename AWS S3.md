@@ -1,0 +1,172 @@
+# AWS S3
+
+## 🧱 Basic Concepts
+
+- **Bucket Naming Rules**:
+  - Globally unique
+  - 3–63 characters
+  - Lowercase only
+  - No underscores `_`, no uppercase letters
+  - No names starting with `xn--` or ending in `-s3alias`
+
+- **Object Pathing**:
+  - No actual directories — it's all key prefixes.
+  - Full object path = **prefix** + **object name**
+  - Max object size: **5 TB**
+
+- **Metadata vs Tags**:
+  - **Metadata**: Key-value pairs (e.g., `Content-Type`)
+  - **Tags**: Unicode key-value pairs for categorization
+
+---
+
+## 🔐 Security
+
+- **Access Control**:
+  - IAM Policies (recommended)
+  - Bucket Policies
+  - Object ACL / Bucket ACL *(not recommended unless needed)*
+
+- **Permission Evaluation**:
+  - A principal can access an object if:
+    - IAM policy allows **OR**
+    - Resource policy allows (Bucket or Object ACL)
+    - AND no explicit **Deny**
+
+- **Encryption**:
+  - **SSE-S3**: AES-256, AWS managed
+  - **SSE-KMS**: KMS key, API calls count toward regional quota
+  - **SSE-C**: Customer-provided key (via HTTP headers)
+  - **CSE**: Client-side encryption (you manage the encryption)
+
+- **Force Encryption**:
+  - Enforced via bucket policy to allow only HTTPS and encrypted uploads.
+
+- **MFA Delete**:
+  - Protects object versions; must be enabled via root user.
+
+---
+
+## ⚙️ Object Management
+
+- **Versioning**:
+  - Keeps multiple versions of objects
+  - "Suspending" versioning doesn’t delete old versions
+  - Deletion protection when enabled
+
+- **Replication** (Asynchronous):
+  - **Cross-Region Replication (CRR)**: For latency, compliance, cross-account
+  - **Same-Region Replication (SRR)**: For log aggregation or environment syncing
+  - Replication only applies to **new objects**
+  - Use **Batch Replication** for existing objects
+
+---
+
+## 💾 Storage Classes
+
+| Class | Use Case | Notes |
+|-------|----------|-------|
+| **Standard** | Frequent access | Default |
+| **Standard-IA** | Infrequent, quick access | Cheaper, retrieval cost |
+| **Intelligent-Tiering** | Unknown patterns | Auto-tiering |
+| **One Zone-IA (1ZIA)** | Infrequent, 1 AZ tolerance | Not for critical data |
+| **Glacier Instant Retrieval (GIR)** | Archival, instant access | Min 90 days |
+| **Glacier Flexible Retrieval (GFR)** | Archival | Expedited (1-5m), Standard (3–5h), Bulk (5–12h), min 90d |
+| **Glacier Deep Archive (GDA)** | Long-term archival | Standard (12h), Bulk (48h), min 180d |
+
+---
+
+## 🔄 Advanced Features
+
+- **Byte-Range Fetches**:
+  - Allows parallel reads / partial object downloads
+
+- **Multipart Upload**:
+  - Required for files >5 GB
+  - Recommended for files >100 MB
+  - Enables parallelism
+
+- **Transfer Acceleration**:
+  - Speeds up uploads using AWS Edge Locations
+
+- **Batch Operations**:
+  - Bulk copy, tagging, ACL, encryption, invoking Lambda, etc.
+
+- **Lifecycle Rules**:
+  - Automate **transition** (between storage classes) and **expiration**
+  - Applies to current versions, old versions, and multipart uploads
+
+- **S3 Inventory**:
+  - CSV/ORC/Parquet listing of objects and metadata
+
+- **S3 Analytics**:
+  - Helps decide on transitions to IA classes
+
+- **S3 Storage Lens**:
+  - Visual insights, usage metrics, optimization reports
+
+---
+
+## 🔔 Event Notification
+
+- **Supports**: `Create`, `Delete`, `Restore`, `Replication`
+- **Destinations**:
+  - SNS
+  - SQS
+  - Lambda
+- **Filtering**: Prefix/suffix filtering supported
+- **EventBridge**: Advanced filtering, retry logic, archiving
+
+---
+
+## ⚡ Performance & Limits
+
+- **Per Prefix Throughput**:
+  - 3,500 PUT/COPY/POST/DELETE per second
+  - 5,500 GET/HEAD per second
+
+---
+
+## 🌐 Static Website Hosting
+
+- **URL Format**:
+  - `http://<bucket-name>.s3-website-<region>.amazonaws.com`
+
+---
+
+## 🔗 Sharing & Access
+
+- **Requester Pays**:
+  - The requester is billed for access, not the bucket owner
+
+- **Pre-Signed URLs**:
+  - Temporary access (GET/PUT)
+  - Console: 1–720 min
+  - CLI/SDK: 1 hour – 7 days
+
+- **Access Logs**:
+  - Can be sent to another S3 bucket in the **same region**
+
+---
+
+## 📜 Compliance
+
+- **Object Lock (WORM)**:
+  - Prevents deletion/modification
+  - **Modes**:
+    - **Compliance**: No override possible
+    - **Governance**: Can be overridden with special permission
+  - **Retention Types**:
+    - Retention period
+    - Legal hold
+
+- **Glacier Vault Lock**:
+  - Enforces data retention with policy
+  - Write-Once-Read-Many (WORM)
+
+---
+
+## 🪄 S3 Object Lambda
+
+- Add custom Lambda logic to S3 GET requests (e.g., transform, redact)
+- Works through **S3 Object Lambda Access Points**
