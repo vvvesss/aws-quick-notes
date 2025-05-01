@@ -36,11 +36,15 @@ Pay for API call to KMS 0.03$ / 10000calls
   - Custom
     - define user roles to access
     - define who can administer
-    - used for cross account access, example create volume from snapshot from different account: kms:CallerAccount: "target-account-id"
+    - used for cross account access,
+    - Example: create volume from snapshot from different account: kms:CallerAccount: "target-account-id"
 
 ### KMS Multi-Region
 
-Same ID, key, and rotations. Not Global. Primary and replicas. Usage: encrypt in one region and decrypt in others. Not recommended. Global client side encryption on global DDB or Aurora (protect data even from db admin, example SSN).
+- Same ID, key, and rotations. 
+- Not Global. Primary and replicas. 
+- **Usage: encrypt in one and decrypt in other regions.**
+-  Not recommended. Global client side encryption on global DDB or Aurora (protect data even from db admin, example SSN).
 
 ## S3 Replication and Encryption
 
@@ -86,8 +90,8 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 - Integration with RDS
 - KMS encryption
 
-- Multi-Region secrets 
-- **primary - replicas** 
+- Multi-Region secrets
+- **primary - replicas**
 - promote to standalone
 - multi-region apps||DB||disaster
 
@@ -101,11 +105,11 @@ Lambda -> IAM Role -> (GetParameters || GetParametersByPath) API  -> SSM Store
 - DNS(auto renew -> CNAME record) || Email validation
 - Imported Certificate no auto renew, but can send messages
 
-AWS Config(expire check) || ACM => EventBridge => SNS || SQS || Lambda
+- **AWS Config(expire check) || ACM => EventBridge => SNS || SQS || Lambda**
 
 ### API GW Types
 
-- Edge Optimized (default) http -> CF Edge location  -> API GW
+- **Edge Optimized (default) http -> CF Edge location  -> API GW**
   - TLS must be in the same region as CF (us-east1?)
   - CNAME || Alias
 - Regional - can combine with CF
@@ -130,51 +134,51 @@ AWS Config(expire check) || ACM => EventBridge => SNS || SQS || Lambda
   - rate based for DDoS
 - Regional except CF
 - Rule group
-- Fixed IP == GA + ALB with WAF
+- **GA + Fixed IP -> ALB + WAF**
 
 ## AWS Shield
 
 Standard > free syn udp floods and attacks
-Advanced > 
+Advanced > cost much, but full features and support
 
 ## AWS Firewall Manager
 
-- Security Policy: set of rules
+- Security Policy: Set of Rules
   - WAF
   - Shield Advanced
   - SG for EC2, ALB, ENI
   - Network Firewall VPC
   - DNS Firewall
-  - region level
+  - Region Level
 
-Rules can be applied to new resource automatically 
+Rules can be applied to new resource automatically
 
 ## GuardDuty
 
 - VPC Flow Logs
 - CloudTrail Logs
 - DNS Logs
-- Operational features
+- Operational Features
   - S3 logs
   - EBS Volumes
   - Lambda Network
   - RDS Login
   - EKS Audit logs
-- Can send events to EventBridge -> SNS || Lambda
+- **Events -> EventBridge -> SNS || Lambda**
 
 ## Inspector
 
-Automated security assessments
+Automated Security Assessments
 
 - EC2
-  - System Manager agent
-  - unintended access
+  - System Manager Agent
+  - Unintended Access
   - OS vulnerabilities
 - Amazon ECR
-  - container images check
+  - Container Images Check
 - Lambda
-  - software vulnerabilities
-  - dependancies
+  - Software Vulnerabilities
+  - Dependencies
 
 Report to Security Hub
 AWS EventBridge
@@ -183,4 +187,4 @@ AWS EventBridge
 
 Track for PII Personally identifiable information and notify EventBridge.
 
-S3 -> Macie -> EventBridge
+- **S3 -> Macie -> EventBridge**
