@@ -198,7 +198,7 @@ VPC1-(VPG1) && VPC2(VPG2) <-> DCGW <-> (Private Virtual Interface VLAN) <-> AWS 
 - dedicated connections: 1Gbps, 10Gbps 100Gbps
   - dedicated physical port
   - AWS request required
-- hosted connections: 50Mbps 500Mbps 10Gbps 
+- hosted connections: 50Mbps 500Mbps 10Gbps
   - AWS request required
   - add/remove capacity on demand
 - lead times ~ 1 month
@@ -208,7 +208,7 @@ VPC1-(VPG1) && VPC2(VPG2) <-> DCGW <-> (Private Virtual Interface VLAN) <-> AWS 
 ### Resiliency
 
 - Multiple DC connections
-- High resiliency 2 DC locations with 1 line each to 2 on premise 
+- High resiliency 2 DC locations with 1 line each to 2 on premise
 - Max resiliency 2 DC each with 2 lines to 2 on premises
 
 ## Direc Connect + Site to Site VPN
@@ -232,10 +232,10 @@ Corporate Data center <-> AWS VPC && Site to Site VPN (for backup purpose)
 - ECMP equal cost multi-path routing
 - Routing via multiple best path
 - Usecase: **Multiple StoS VPN connection to increase bw to AWS**
-- TG share direct connection between multiple accounts 
+- TG share direct connection between multiple accounts
   - customer datacenter <-vlan-> AWS DC Location Endpoint <-transit VIF-> DCGW <-> TG <-> Multiple VPC's
 
-## Traffic Mirroring 
+## Traffic Mirroring
 
 - Inspect network traffic
 - Route to appliance
@@ -265,13 +265,13 @@ Allow outbound traffic only to hide instances from internet access. Routing requ
 - CF to Internet 0.085$ (requests pricing 7X cheaper)
 - cross region replication 0.02$
 
-#### EC2 -> NatGW -> IGW -> internet -> S3 BAD!
+#### EC2 -> NatGW -> IGW -> internet -> S3 BAD
 
 - 0.045/hour NAT GW to S3 from internet
 - 0.045 per GB NAT GW to S3 from internet
 - Data transfer out cross region 0.09
 
-#### EC2 -> VPC Endpoint -> S3 
+#### EC2 -> VPC Endpoint -> S3
 
 - 0.01$ data tranfsfer in/out same region
 
@@ -293,6 +293,6 @@ Allow outbound traffic only to hide instances from internet access. Routing requ
 - To / from DC & Site-to-site VPN
 - Fine grained control
 - IP port prot domain regex
-- alert on traffic filtering 
+- alert on traffic filtering
 - active flow inspection
 - all matches send to S3, CW logs, KDF
