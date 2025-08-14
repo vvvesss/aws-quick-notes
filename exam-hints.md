@@ -1,4 +1,15 @@
-# AWS Solutions Architect Exam Study Guide
+# AWS Solutions Architect Reference Guide
+
+## Purpose
+
+This document serves as a comprehensive reference for AWS service selection and architectural decision-making. While originally designed as an exam study guide, it functions as a practical engineering handbook for:
+
+**Service Selection:** Quick decision matrices and comparison tables to choose the right AWS service for specific technical requirements, avoiding over-engineering or under-provisioning.
+**Architectural Patterns:** Real-world guidance on when to combine services (e.g., CloudFront + ALB vs Global Accelerator, Kinesis Data Streams vs Firehose) based on performance, cost, and operational requirements.
+**Operational Insights:** Practical tips on service limits, integration capabilities, and common gotchas that impact production deployments and system reliability.
+**Cost & Performance Trade-offs:** Clear guidance on when premium services justify their cost versus when simpler alternatives suffice, helping optimize both budget and system performance.
+
+This reference idea is to eliminates the need to dig through extensive AWS documentation when making time-sensitive architectural decisions, providing battle-tested patterns and service characteristics in a condensed, searchable format.
 
 ## Table of Contents
 
