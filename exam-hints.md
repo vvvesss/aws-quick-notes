@@ -343,4 +343,5 @@ You configure compute environments ahead of time, where you specify:
 - **Private subnet**: No direct internet route, uses NAT for outbound
 - **Subnets are AZ-specific** (cannot span multiple AZs)
 
+---
 14 Aug 2025 Veselin Yanev
