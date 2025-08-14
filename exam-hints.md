@@ -156,6 +156,7 @@
 
 - **ALB + CloudFront**: Supports AWS WAF
 - **NLB**: Does **NOT** support AWS WAF (use Shield Advanced for DDoS)
+- **GLB**: Transparent Network Gateway + LB for Layer 3 traffic inspection
 
 ## Security & Identity
 
